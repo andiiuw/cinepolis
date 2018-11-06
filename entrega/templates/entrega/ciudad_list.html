@@ -1,7 +1,8 @@
 {% extends 'entrega/base.html' %}
 {% block content %}
 
-        <h1> Listado de Ciudades <a href="{% url 'ciudad_nueva' %}"> <button type="button" class="btn btn-success">Agregar</button></a></h1>
+        <h1> Listado de asignaciones
+           <a href="{% url 'ciudad_nueva' %}"> <button type="button" class="btn btn-success">Agregar</button></a></h1>
         <div>
         <table class="table table-hover">
             <thead>
@@ -13,13 +14,27 @@
               </tr>
                 </thead>
 <tbody>
-    {% for ciudad in ciudades.all  %}
+    {% for ciudad in ciudades %}
   <tr>
     <td>{{ ciudad.nombre }}</td>
-    <td>{{ ciudad.paquete }}</td>
+
+
     <td>
+      {% for pa in ciudad.paquete.all %}
+      <li>
+        <ul>
+{{ pa.descripcion }}
+        </ul>
+      </li>
+  {% endfor %}
+
+    </td>
+
+    <td>
+<a href="{% url 'ciudad_edit' pk=ciudad.pk %}"><button type="button" class="btn btn-primary">Editar</button></a>
 <a href="{% url 'ciudad_remove' pk=ciudad.pk %}"><button type="button" class="btn btn-danger">Eliminar</button></a>
   </td>
+
   </tr>
   {% endfor %}
 </tbody>

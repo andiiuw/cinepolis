@@ -26,6 +26,7 @@ urlpatterns = [
 
     url(r'^ciudad/lista/$', views.ciudad_list, name='ciudad_list'),
     url(r'^ciudad/nueva/$', views.ciudad_nueva, name='ciudad_nueva'),
+    url(r'^ciudad/(?P<pk>[0-9]+)/edit/$', views.ciudad_edit, name='ciudad_edit'),
     url(r'^ciudad/(?P<pk>\d+)/remove/$', views.ciudad_remove, name='ciudad_remove'),
     #url(r'^camion/nueva/$', views.camion_nueva, name='camion_nueva'),
 ]

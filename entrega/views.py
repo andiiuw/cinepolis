@@ -145,8 +145,23 @@ def ciudad_nueva(request):
             for paquete_id in request.POST.getlist('paquete'):
                 asignacion = Asignacion(paquete_id=paquete_id, ciudad_id = ciudad.id)
                 asignacion.save()
+
             messages.add_message(request, messages.SUCCESS, 'Asignacion Guardada Exitosamente')
+            return redirect('ciudad_list')
 
     else:
         formulario = CiudadForm()
+    return render(request, 'entrega/ciudad_editar.html', {'formulario': formulario})
+
+def ciudad_edit(request, pk):
+    ciudad = get_object_or_404(Ciudad, pk=pk)
+    if request.method == "POST":
+        formulario = CiudadForm(request.POST, request.FILES, instance=ciudad)
+        if formulario.is_valid():
+            ciudad = formulario.save(commit=False)
+            ciudad.save()
+            return redirect('ciudad_list')
+
+    else:
+        formulario = CiudadForm(instance=ciudad)
     return render(request, 'entrega/ciudad_editar.html', {'formulario': formulario})
