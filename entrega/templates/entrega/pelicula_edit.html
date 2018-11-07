@@ -1,9 +1,9 @@
 {% extends 'entrega/base.html' %}
 
 {% block content %}
-    <h1>Camion</h1>
-    <form method="POST" class="camion-form">{% csrf_token %}
-        {{ camionform.as_p }}
+    <h1>Pelicula</h1>
+    <form method="POST" class="sala-form">{% csrf_token %}
+        {{ peliculaform.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
 {% endblock %}

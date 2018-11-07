@@ -6,17 +6,17 @@ urlpatterns = [
 
     url(r'^$', views.principal_list, name='principal_list'),
 
-    url(r'^camion/lista/$', views.camion_list, name='camion_list'),
-    url(r'^camion/(?P<pk>[0-9]+)/$', views.camion_detail, name='camion_detail'),
-    url(r'^camion/(?P<pk>\d+)/remove/$', views.camion_remove, name='camion_remove'),
-    url(r'^camion/new/$', views.camion_new, name='camion_new'),
-    url(r'^camion/(?P<pk>[0-9]+)/edit/$', views.camion_edit, name='camion_edit'),
+    url(r'^sala/lista/$', views.sala_list, name='sala_list'),
+    url(r'^sala/(?P<pk>[0-9]+)/$', views.sala_detail, name='sala_detail'),
+    url(r'^sala/(?P<pk>\d+)/remove/$', views.sala_remove, name='sala_remove'),
+    url(r'^sala/new/$', views.sala_new, name='sala_new'),
+    url(r'^sala/(?P<pk>[0-9]+)/edit/$', views.sala_edit, name='sala_edit'),
 
-    url(r'^piloto/lista/$', views.piloto_list, name='piloto_list'),
-    url(r'^piloto/(?P<pk>[0-9]+)/$', views.piloto_detail, name='piloto_detail'),
-    url(r'^piloto/(?P<pk>\d+)/remove/$', views.piloto_remove, name='piloto_remove'),
-    url(r'^piloto/new/$', views.piloto_new, name='piloto_new'),
-    url(r'^piloto/(?P<pk>[0-9]+)/edit/$', views.piloto_edit, name='piloto_edit'),
+    url(r'^pelicula/lista/$', views.pelicula_list, name='pelicula_list'),
+    url(r'^pelicula/(?P<pk>[0-9]+)/$', views.pelicula_detail, name='pelicula_detail'),
+    url(r'^pelicula/(?P<pk>\d+)/remove/$', views.pelicula_remove, name='pelicula_remove'),
+    url(r'^pelicula/new/$', views.pelicula_new, name='pelicula_new'),
+    url(r'^pelicula/(?P<pk>[0-9]+)/edit/$', views.pelicula_edit, name='pelicula_edit'),
 
     url(r'^paquete/$', views.paquete_list, name='paquete_list'),
     url(r'^paquete/(?P<pk>[0-9]+)/$', views.paquete_detail, name='paquete_detail'),
@@ -28,5 +28,5 @@ urlpatterns = [
     url(r'^ciudad/nueva/$', views.ciudad_nueva, name='ciudad_nueva'),
     url(r'^ciudad/(?P<pk>[0-9]+)/edit/$', views.ciudad_edit, name='ciudad_edit'),
     url(r'^ciudad/(?P<pk>\d+)/remove/$', views.ciudad_remove, name='ciudad_remove'),
-    #url(r'^camion/nueva/$', views.camion_nueva, name='camion_nueva'),
+   
 ]

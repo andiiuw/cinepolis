@@ -7,8 +7,8 @@
         <table class="table table-hover">
             <thead>
               <tr>
-                <th> Ciudad </th>
-                <th> Paquete</th>
+                <th> Sala </th>
+                <th> Peliculas</th>
 
                   <th>Opciones</th>
               </tr>
@@ -16,15 +16,15 @@
 <tbody>
     {% for ciudad in ciudades %}
   <tr>
-    <td>{{ ciudad.nombre }}</td>
+    <td>{{ ciudad.sala }}</td>
 
 
     <td>
-      {% for pa in ciudad.paquete.all %}
+      {% for pa in ciudad.pelicula.all %}
       <li>
-        <ul>
-{{ pa.descripcion }}
-        </ul>
+      
+{{ pa.nombre }}
+        
       </li>
   {% endfor %}
 

@@ -1,0 +1,26 @@
+{% extends 'entrega/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if pelicula.nombre %}
+            <div class="date">
+              <h1>Pelicula:
+                {{ pelicula.nombre }} </h1>
+            </div>
+        {% endif %}
+        <div class="col-md-12">
+          <div class="form-group">
+        <label>Formato:</label>
+        <p>{{ pelicula.formato }}</p>
+      </div>
+        <div class="form-group">
+            <label>Duraccion:</label>
+        <p>{{ pelicula.duracion }}</p>
+      </div>
+
+     
+<a href="{% url 'pelicula_list' %}"><button type="button" class="btn btn-warning">Regresar</button></a>
+</div>
+
+    </div>
+{% endblock %}

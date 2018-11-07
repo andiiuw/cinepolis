@@ -9,25 +9,25 @@ def principal_list(request):
     return render(request, 'entrega/principal_list.html', {})
 
 @login_required
-def camion_list(request):
-    camiones = Camion.objects.all()
-    return render(request, 'entrega/camion_list.html', {'camiones': camiones})
+def sala_list(request):
+    salas = Sala.objects.all()
+    return render(request, 'entrega/sala_list.html', {'salas': salas})
 @login_required
-def piloto_list(request):
-    pilotos = Piloto.objects.all()
-    return render(request, 'entrega/piloto_list.html', {'pilotos': pilotos})
+def pelicula_list(request):
+    peliculas = Pelicula.objects.all()
+    return render(request, 'entrega/pelicula_list.html', {'peliculas': peliculas})
 @login_required
 def paquete_list(request):
     paquetes = Paquete.objects.all()
     return render(request, 'entrega/paquete_list.html', {'paquetes': paquetes})
 
-def camion_detail(request, pk):
-    camion = get_object_or_404(Camion, pk=pk)
-    return render(request, 'entrega/camion_detail.html', {'camion': camion})
+def sala_detail(request, pk):
+    sala = get_object_or_404(Sala, pk=pk)
+    return render(request, 'entrega/sala_detail.html', {'sala': sala})
 
-def piloto_detail(request, pk):
-    piloto = get_object_or_404(Piloto, pk=pk)
-    return render(request, 'entrega/piloto_detail.html', {'piloto': piloto})
+def pelicula_detail(request, pk):
+    pelicula = get_object_or_404(Pelicula, pk=pk)
+    return render(request, 'entrega/pelicula_detail.html', {'pelicula': pelicula})
 
 def paquete_detail(request, pk):
     paquete = get_object_or_404(Paquete, pk=pk)
@@ -40,16 +40,16 @@ def paquete_remove(request, pk):
     return redirect('paquete_list')
 
 @login_required
-def piloto_remove(request, pk):
-    piloto = get_object_or_404(Piloto, pk=pk)
-    piloto.delete()
-    return redirect('piloto_list')
+def pelicula_remove(request, pk):
+    pelicula = get_object_or_404(Pelicula, pk=pk)
+    pelicula.delete()
+    return redirect('pelicula_list')
 
 @login_required
-def camion_remove(request, pk):
-    camion = get_object_or_404(Camion, pk=pk)
-    camion.delete()
-    return redirect('camion_list')
+def sala_remove(request, pk):
+    sala = get_object_or_404(Sala, pk=pk)
+    sala.delete()
+    return redirect('sala_list')
 
 @login_required
 def ciudad_remove(request, pk):
@@ -58,27 +58,27 @@ def ciudad_remove(request, pk):
     return redirect('ciudad_list')
 
 @login_required
-def camion_new(request):
+def sala_new(request):
     if request.method == "POST":
-        camionform = CamionForm(request.POST)
-        if camionform.is_valid():
-            camion = camionform.save(commit=False)
-            camion.save()
-            return redirect('camion_detail', pk=camion.pk)
+        salaform = SalaForm(request.POST)
+        if salaform.is_valid():
+            sala = salaform.save(commit=False)
+            sala.save()
+            return redirect('sala_detail', pk=sala.pk)
     else:
-        camionform = CamionForm()
-    return render(request, 'entrega/camion_edit.html', {'camionform': camionform})
+        salaform = SalaForm()
+    return render(request, 'entrega/sala_edit.html', {'salaform': salaform})
 @login_required
-def piloto_new(request):
+def pelicula_new(request):
     if request.method == "POST":
-        pilotoform = PilotoForm(request.POST)
-        if pilotoform.is_valid():
-            piloto = pilotoform.save(commit=False)
-            piloto.save()
-            return redirect('piloto_detail', pk=piloto.pk)
+        peliculaform = PeliculaForm(request.POST)
+        if peliculaform.is_valid():
+            pelicula = peliculaform.save(commit=False)
+            pelicula.save()
+            return redirect('pelicula_detail', pk=pelicula.pk)
     else:
-        pilotoform = PilotoForm()
-    return render(request, 'entrega/piloto_edit.html', {'pilotoform': pilotoform})
+        peliculaform = PeliculaForm()
+    return render(request, 'entrega/pelicula_edit.html', {'peliculaform': peliculaform})
 
 @login_required
 def paquete_new(request):
@@ -93,30 +93,30 @@ def paquete_new(request):
     return render(request, 'entrega/paquete_edit.html', {'paqueteform': paqueteform})
 
 @login_required
-def camion_edit(request, pk):
-    camion = get_object_or_404(Camion, pk=pk)
+def sala_edit(request, pk):
+    sala = get_object_or_404(Sala, pk=pk)
     if request.method == "POST":
-        camionform = CamionForm(request.POST, instance=camion)
-        if camionform.is_valid():
-            camion = camionform.save(commit=False)
-            camion.save()
-            return redirect('camion_detail', pk=camion.pk)
+        salaform = SalaForm(request.POST, instance=sala)
+        if salaform.is_valid():
+            sala = salaform.save(commit=False)
+            sala.save()
+            return redirect('sala_detail', pk=sala.pk)
     else:
-        camionform = CamionForm(instance=camion)
-    return render(request, 'entrega/camion_edit.html', {'camionform': camionform})
+        salaform = SalaForm(instance=sala)
+    return render(request, 'entrega/sala_edit.html', {'salaform': salaform})
 
 @login_required
-def piloto_edit(request, pk):
-    piloto = get_object_or_404(Piloto, pk=pk)
+def pelicula_edit(request, pk):
+    pelicula = get_object_or_404(Pelicula, pk=pk)
     if request.method == "POST":
-        pilotoform = PilotoForm(request.POST, instance=piloto)
-        if pilotoform.is_valid():
-            piloto = pilotoform.save(commit=False)
-            piloto.save()
-            return redirect('piloto_detail', pk=piloto.pk)
+        peliculaform = PeliculaForm(request.POST, instance=pelicula)
+        if peliculaform.is_valid():
+            pelicula = peliculaform.save(commit=False)
+            pelicula.save()
+            return redirect('pelicula_detail', pk=pelicula.pk)
     else:
-        pilotoform = PilotoForm(instance=piloto)
-    return render(request, 'entrega/piloto_edit.html', {'pilotoform': pilotoform})
+        peliculaform = PeliculaForm(instance=pelicula)
+    return render(request, 'entrega/pelicula_edit.html', {'peliculaform': peliculaform})
 
 @login_required
 def paquete_edit(request, pk):
@@ -141,12 +141,12 @@ def ciudad_nueva(request):
     if request.method == "POST":
         formulario = CiudadForm(request.POST)
         if formulario.is_valid():
-            ciudad = Ciudad.objects.create(nombre=formulario.cleaned_data['nombre'])
-            for paquete_id in request.POST.getlist('paquete'):
-                asignacion = Asignacion(paquete_id=paquete_id, ciudad_id = ciudad.id)
+            ciudad = Ciudad.objects.create(sala=formulario.cleaned_data['sala'])
+            for pelicula_id in request.POST.getlist('pelicula'):
+                asignacion = Asignacion(pelicula_id=pelicula_id, ciudad_id = ciudad.id)
                 asignacion.save()
 
-            messages.add_message(request, messages.SUCCESS, 'Asignacion Guardada Exitosamente')
+            messages.add_message(request, messages.SUCCESS, 'Cartelera Guardada Exitosamente')
             return redirect('ciudad_list')
 
     else:

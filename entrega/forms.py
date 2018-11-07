@@ -1,29 +1,29 @@
 from django import forms
 from .models import *
 
-class CamionForm(forms.ModelForm):
+class SalaForm(forms.ModelForm):
     class Meta:
-        model = Camion
-        fields = ('marca','modelo' ,'matricula', 'tipo')
+        model = Sala
+        fields = ('numero','capacidad' ,'responsable')
 
-class PilotoForm(forms.ModelForm):
+class PeliculaForm(forms.ModelForm):
     class Meta:
-        model = Piloto
-        fields = ('camion','nombre','direccion','telefono','salario')
+        model = Pelicula
+        fields = ('nombre','formato','duracion')
 
 class PaqueteForm(forms.ModelForm):
     class Meta:
         model = Paquete
-        fields = ('piloto','destinatario','direccion','descripcion')
+        fields = ('pelicula','destinatario','direccion','descripcion')
 
 class CiudadForm(forms.ModelForm):
 
     class Meta:
         model = Ciudad
-        fields = ('nombre','paquete')
+        fields = ('sala','pelicula')
 
         def __init__ (self, *args, **kwargs):
             super(CiudadForm, self).__init__(*args, **kwargs)
-            self.fields["paquete"].widget = forms.widgets.CheckboxSelectMultiple()
-            self.fields["paquete"].help_text = "Ingrese los paquetes"
-            self.fields["paquete"].queryset = Paquete.objects.all()
+            self.fields["pelicula"].widget = forms.widgets.CheckboxSelectMultiple()
+            self.fields["pelicula"].help_text = "Ingrese las peliculas"
+            self.fields["pelicula"].queryset = Paquete.objects.all()
